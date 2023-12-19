@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(40, 40, 40);
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    height: 100vh;
+    margin: 0;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+#board {
+    width: 90vh;
+    height: 90vh;
+    background-color: rgb(56, 107, 58);
+    box-shadow: 0 0 20px 5px black;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#board > div {
+    border: 0.2px solid darkslategray;
+    height: 5%;
+    width: 5%;
+    font-size: small;
+    text-align: center;
+    color: rgb(115, 115, 115);
+}
+
+.snake {
+    background-color: grey;
+}
+
+.food {
+    background-color: rgb(63, 9, 9);
+}
