@@ -1,6 +1,6 @@
 // * Cached Elements
 const board = document.getElementById('board')
-document.addEventListener('keydown', snakeMovement)
+document.addEventListener('keydown', handleMovement)
 
 // * GRID Variables
 const width = 20
@@ -12,10 +12,9 @@ let cells = [] //to be able to keep track of positions
 const snakeSP = [330]
 let snakeCP = snakeSP
 
-let foodSP = 169
 let randomNum = Math.floor(Math.random() * 399)
 
-let winner
+let lost = false
 
 // * add/remove Classes Fucntions //
 function addClass (position, name) {
@@ -32,6 +31,7 @@ init()
 function init() {
     createGrid()
     startingPositions()
+    eatingFood()
     }
 
 function createGrid() {
@@ -49,11 +49,11 @@ function createGrid() {
 
 function startingPositions() {
     addClass(snakeCP, 'snake')
-    addClass(foodSP, 'food')
+    newFood()
 }
 
 
-function snakeMovement(event) {
+function handleMovement(event) {
     const key = event.key
 
     const left = 'a'
@@ -84,10 +84,15 @@ function snakeMovement(event) {
 
 function eatingFood() {
 
-    if (snakeCP === foodSP) {
+    if (snakeCP === foodSP ) {
         removeClass(foodSP, 'food')
-        foodSP = randomNum
-        addClass(foodSP, 'food')
+        newFood()
+        
     }
     
+}
+
+function newFood() {
+    foodSP = randomNum
+    addClass(foodSP, 'food')
 }
